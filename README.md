@@ -13,11 +13,11 @@ make
 
 ./bin/rshell
 
-#Introduction
+# Introduction
 
 //insert what rshell is doing and how to run it
 
 
-#Known Bugs
+# Known Bugs
 
 //insert how we have all the bugs in the world and cant run our program at all :(
