@@ -3,15 +3,17 @@ Assignment 2
 
 
 # Installation
-git clone https://github.com/ralme002/rshell.git
+In order to run our program please run the following commands
 
-cd rshell
+1) git clone https://github.com/ralme002/rshell.git
 
-git checkout hw4
+2) cd rshell
 
-make
+3) git checkout hw4
 
-./bin/rshell
+4) make
+
+5) ./bin/rshell
 
 # Introduction
 
