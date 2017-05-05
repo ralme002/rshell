@@ -3,7 +3,7 @@ Assignment 2
 
 
 # Installation
-git clone //insert link here
+git clone https://github.com/ralme002/rshell.git
 
 cd rshell
 
