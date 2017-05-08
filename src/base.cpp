@@ -4,6 +4,7 @@
 
 using namespace std;
 
+
 void base::setinput(string temp1)  //for testing purposes the string is hardcoded but will be switched out for user input
 {
 	this->inputstring = temp1;
