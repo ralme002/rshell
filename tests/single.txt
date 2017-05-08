@@ -1,0 +1,8 @@
+ls -a
+echo nerd
+echo robert
+mkdir eraseme
+cd eraseme
+pwd
+cd
+exit

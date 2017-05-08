@@ -20,7 +20,7 @@ public:
 	string show_data();
 	void setprivate(string x);
 	virtual void execute_cleanup(){};
-	virtual vector <base*> execute_builder(string p){};
+	virtual vector <base*> execute_builder(string p){vector<base*> v; return v;};
 	virtual void execute_call(vector <base*> tmp){};
 	
 protected:

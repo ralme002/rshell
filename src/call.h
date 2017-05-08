@@ -35,7 +35,7 @@ class call : public base
         
         void setArray();
         void getVector(vector <base*> tmp);
-        int execute_cmd(string tmp); //syscall execvp to execute commands  >>   virtual void execute_cmd(base* current);     
+        void execute_cmd(string tmp); //syscall execvp to execute commands  >>   virtual void execute_cmd(base* current);     
         int exit_check(int ex); //function to check string/array to for exit command
         void execute_exit(); //function to exit the program if exit_check is 1
         
@@ -45,6 +45,7 @@ class call : public base
     int ex;
     vector <base*> holdv;
     char* argv;
+    bool TestPF;
    
     
     

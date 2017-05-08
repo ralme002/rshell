@@ -23,7 +23,7 @@ void builder::vector_builder() //complete! assumptions are that there is a space
     int spacecount =0;
     
 
-   for(int i=0; i < temp1.length(); i++)
+   for(unsigned int i=0; i < temp1.length(); i++)
    {
 
        if((temp2.length() == 0)&& (temp1.at(i) == ' '))
@@ -93,15 +93,16 @@ void builder::vector_builder() //complete! assumptions are that there is a space
            spacecount =0;
        }
    }
-   
+  
    str.push_back(temp2); cout << "pushed:" << temp2 << ":" << endl;
+    
 }
 
 void builder::container_builder()
 {
     base* p = new base;
     
-    for(int i=0; i < this->str.size(); i++)
+    for(unsigned int i=0; i < this->str.size(); i++)
     {
         p->setprivate(str.at(i));
         this->container.push_back(p);

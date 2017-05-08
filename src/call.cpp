@@ -9,10 +9,10 @@ void call::execute_call(vector <base*> tmp)
 void call::setArray()
 {
     string tmp;
-    int j = this->holdv.size();
+    unsigned int j = this->holdv.size();
     cout << j << endl;
     
-   int i = 0; 
+    unsigned int i = 0; 
     while(i != this->holdv.size())
     {
         tmp = this->holdv.at(i)->show_data();
@@ -36,9 +36,9 @@ void call::getVector(vector <base*> tmp)
 
 
 //syscall execvp to execute commands
-int call::execute_cmd(string tmp)    
+void call::execute_cmd(string tmp)    
 {
-    int myTemp = 0;
+    //int myTemp = 0;
     
     argv = new char[tmp.length() + 1];
     strcpy(argv,tmp.c_str());
@@ -73,20 +73,18 @@ int call::execute_cmd(string tmp)
           char errmsg[64];
           snprintf( errmsg, sizeof(errmsg), "exec '%s' failed", array[0] );
           perror( errmsg );
-          return -1;
+          this->TestPF = false;
         }
         
-        return 5;
+        this->TestPF = true;
      }
      else
      {
          waitpid(pid, &status, 0);
      }
-     
      //kill(pid, SIGKILL);
 }
 
- 
 //function to check string/array to for exit command        
 int call::exit_check(int ex)
 {
@@ -96,13 +94,13 @@ int call::exit_check(int ex)
 //function to exit the program if exit_check is 1
 void call::execute_exit()
 {
-    
+    cout << "Exit Program..." << endl;
+    exit(0);
 }
-
 
 void call::greatestAlgorithmInTheWorld()
 {
-    int successint = 0;
+    
     bool lastrun = false;
     string current;
     string last_conn;
@@ -110,7 +108,7 @@ void call::greatestAlgorithmInTheWorld()
     
     cout << holdv.size();
     
-    for(int i=0; i< holdv.size();i++)
+    for(unsigned int i=0; i< holdv.size();i++)
     {
         current = this->holdv.at(i)->show_data();
         
@@ -119,36 +117,45 @@ void call::greatestAlgorithmInTheWorld()
             last_conn = this->holdv.at(i-1)->show_data();
         }
         
-        cout << endl << "==current==" << current << " ==last_conn== " << last_conn << " = " << lastrun << endl;
+        cout << endl << "==current==" << current << "==last_conn==" << last_conn << "==" << lastrun << endl;
+
+        if(current == "exit")
+        {
+           execute_exit();
+        }
         
         if(counter == 0)
         {
-            successint = execute_cmd(current);
-            if(successint != -1)
-            {
-                lastrun = true;
-            }
-            else
-            {
-                lastrun = false;
-            }
-            i++; 
-            counter++;
+            
+                execute_cmd(current);
+                if(this->TestPF != false)
+                {
+                    lastrun = true;
+                }
+                else
+                {
+                    lastrun = false;
+                }
+                i++; 
+                counter++;
+            
         }
         
         if((last_conn == "&&") && (lastrun ==true))
         {
-            successint = execute_cmd(current);
-            if(successint != -1)
-            {
-                lastrun = true;
-            }
-            else
-            {
-                lastrun = false;
-            }
-            i++; 
-            counter++;
+            
+                execute_cmd(current);
+                if(this->TestPF != false)
+                {
+                    lastrun = true;
+                }
+                else
+                {
+                    lastrun = false;
+                }
+                i++; 
+                counter++;
+            
         }
         if((last_conn == "&&") && (lastrun ==false))
         { //just move to next command since last one failed
@@ -159,17 +166,19 @@ void call::greatestAlgorithmInTheWorld()
         
         if((last_conn == "||") && (lastrun == false))
         {
-            successint = execute_cmd(current);
-            if(successint != -1)
-            {
-                lastrun = true;
-            }
-            else
-            {
-                lastrun = false;
-            }
-            i++; 
-            counter++;
+            
+                execute_cmd(current);
+                if(this->TestPF != false)
+                {
+                    lastrun = true;
+                }
+                else
+                {
+                    lastrun = false;
+                }
+                i++; 
+                counter++;
+            
         }
         if((last_conn == "||") && (lastrun == true))
         { //just move to next command since last one failed
@@ -180,17 +189,19 @@ void call::greatestAlgorithmInTheWorld()
         
         if(last_conn == ";")
         {
-            successint = execute_cmd(current);
-            if(successint != -1)
-            {
-                lastrun = true;
-            }
-            else
-            {
-                lastrun = false;
-            }
-            i++;
-            counter++;
+            
+                execute_cmd(current);
+                if(this->TestPF != false)
+                {
+                    lastrun = true;
+                }
+                else
+                {
+                    lastrun = false;
+                }
+                i++;
+                counter++;
+            
         }
     }
 }

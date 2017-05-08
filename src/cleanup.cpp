@@ -26,18 +26,22 @@ void cleanup::clean()
 {
     string temp1 = this->cleanup_data;
     string temp2;
-    int leave=0;
+    //int leave=0;
     
-    for(int i=0; i < temp1.length(); i++)
+    for(unsigned int i=0; i < temp1.length(); i++)
     {
-       
-    
-        temp2 += temp1.at(i);
+       if(temp1.at(i) == '#')
+       {
+           i = temp1.length();
+       }
+       else
+       {
+           temp2 += temp1.at(i);
+       }
     }
+
     
-    temp2 += '\0';
-    
-    cout << "//TESTING// current after cleanup:" << temp2 << endl;
+    cout << "AFTER CLEANUP:" << temp2 << endl;
     
     
     this->cleanup_data = temp2;
@@ -45,5 +49,5 @@ void cleanup::clean()
 
 void cleanup::changebasestring()
 {
-    base:setinput(this->cleanup_data);
+    base::setinput(this->cleanup_data);
 }
