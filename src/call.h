@@ -33,9 +33,8 @@ class call : public base
         void greatestAlgorithmInTheWorld();
         void execute_call(vector <base*> tmp);
         
-        void setArray();
         void getVector(vector <base*> tmp);
-        void execute_cmd(string tmp); //syscall execvp to execute commands  >>   virtual void execute_cmd(base* current);     
+        int execute_cmd(string tmp); //syscall execvp to execute commands  >>   virtual void execute_cmd(base* current);     
         int exit_check(int ex); //function to check string/array to for exit command
         void execute_exit(); //function to exit the program if exit_check is 1
         

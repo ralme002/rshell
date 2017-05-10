@@ -18,14 +18,15 @@ using namespace std;
 
 int main()
 {
+	int totalcount=0;
 	while(1)
 	{
+		cout << "Running.." << endl;
+		
+		totalcount++;
 	string temp1;
 		getline(cin, temp1);
 		
-	cout << endl <<"/////////////////SEPERATE INPUT ////////////////////////////" << endl;
-	cout  << "INPUT:" << temp1 << endl;
-	
 	base *first = new cleanup;
 		first->setinput(temp1); //calls user input and stores in private string
 		first->execute_cleanup();

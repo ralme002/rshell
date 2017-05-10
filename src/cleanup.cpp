@@ -24,10 +24,13 @@ void cleanup::printcleanupstring()
 
 void cleanup::clean()
 {
-    string temp1 = this->cleanup_data;
     string temp2;
-    //int leave=0;
-    
+    string temp1 = this->cleanup_data;
+    if(temp1.at(temp1.length()-1) == ';')
+    {
+        temp1.at(temp1.length()-1) = '\0';
+    }
+ 
     for(unsigned int i=0; i < temp1.length(); i++)
     {
        if(temp1.at(i) == '#')
@@ -39,10 +42,6 @@ void cleanup::clean()
            temp2 += temp1.at(i);
        }
     }
-
-    
-    cout << "AFTER CLEANUP:" << temp2 << endl;
-    
     
     this->cleanup_data = temp2;
 }

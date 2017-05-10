@@ -6,29 +6,6 @@ void call::execute_call(vector <base*> tmp)
    greatestAlgorithmInTheWorld();
 }
 
-void call::setArray()
-{
-    string tmp;
-    unsigned int j = this->holdv.size();
-    cout << j << endl;
-    
-    unsigned int i = 0; 
-    while(i != this->holdv.size())
-    {
-        tmp = this->holdv.at(i)->show_data();
-        
-        if( i < this->holdv.size())
-        {
-            i++;
-            execute_cmd(tmp);
-        }
-        else
-        {
-            break;
-        }
-    }
-}
-
 void call::getVector(vector <base*> tmp)
 {
    this->holdv = tmp;
@@ -36,7 +13,7 @@ void call::getVector(vector <base*> tmp)
 
 
 //syscall execvp to execute commands
-void call::execute_cmd(string tmp)    
+int call::execute_cmd(string tmp)    
 {
     //int myTemp = 0;
     
@@ -62,7 +39,7 @@ void call::execute_cmd(string tmp)
      
      if(pid<0)
      {
-         printf("*** ERROR: forking child process failed\n"); 
+         printf("*** ERROR: forking child process failed\n");
      }
      
      if(pid==0)
@@ -72,6 +49,7 @@ void call::execute_cmd(string tmp)
         {
           char errmsg[64];
           snprintf( errmsg, sizeof(errmsg), "exec '%s' failed", array[0] );
+          cout << "Error running last command" << endl;
           perror( errmsg );
           this->TestPF = false;
         }
@@ -82,7 +60,8 @@ void call::execute_cmd(string tmp)
      {
          waitpid(pid, &status, 0);
      }
-     //kill(pid, SIGKILL);
+     return 0;
+    // kill(pid, SIGKILL);
 }
 
 //function to check string/array to for exit command        
@@ -100,52 +79,52 @@ void call::execute_exit()
 
 void call::greatestAlgorithmInTheWorld()
 {
-    
+    int successint = 0;
     bool lastrun = false;
     string current;
     string last_conn;
+    string lastlast;
     int counter =0;
+    int hardpipe=0;
     
-    cout << holdv.size();
     
     for(unsigned int i=0; i< holdv.size();i++)
     {
-        current = this->holdv.at(i)->show_data();
-        
         if((counter != 0))
         {
-            last_conn = this->holdv.at(i-1)->show_data();
+                lastlast = last_conn;
+                last_conn = this->holdv.at(i-1)->show_data();
+        }
+         current = this->holdv.at(i)->show_data();
+        
+          if(current == "exit")
+        {
+            execute_exit();
         }
         
-        cout << endl << "==current==" << current << "==last_conn==" << last_conn << "==" << lastrun << endl;
-
-        if(current == "exit")
-        {
-           execute_exit();
-        }
         
         if(counter == 0)
         {
-            
-                execute_cmd(current);
-                if(this->TestPF != false)
-                {
-                    lastrun = true;
-                }
-                else
-                {
-                    lastrun = false;
-                }
-                i++; 
-                counter++;
-            
+            successint = execute_cmd(current);
+            if(successint != -1)
+            {
+                lastrun = true;
+            }
+            else
+            {
+                lastrun = false;
+            }
+            i++; 
+            counter++;
         }
         
         if((last_conn == "&&") && (lastrun ==true))
         {
             
-                execute_cmd(current);
-                if(this->TestPF != false)
+            if(hardpipe!=1)
+             {
+                successint = execute_cmd(current);
+                if(successint != -1)
                 {
                     lastrun = true;
                 }
@@ -153,9 +132,10 @@ void call::greatestAlgorithmInTheWorld()
                 {
                     lastrun = false;
                 }
-                i++; 
-                counter++;
-            
+             }
+             
+            i++; 
+            counter++;
         }
         if((last_conn == "&&") && (lastrun ==false))
         { //just move to next command since last one failed
@@ -166,9 +146,10 @@ void call::greatestAlgorithmInTheWorld()
         
         if((last_conn == "||") && (lastrun == false))
         {
-            
-                execute_cmd(current);
-                if(this->TestPF != false)
+            if(lastlast != "||")
+            {
+                successint = execute_cmd(current);
+                if(successint != -1)
                 {
                     lastrun = true;
                 }
@@ -176,32 +157,33 @@ void call::greatestAlgorithmInTheWorld()
                 {
                     lastrun = false;
                 }
-                i++; 
-                counter++;
-            
+            }
+            i++; 
+            counter++;
         }
         if((last_conn == "||") && (lastrun == true))
-        { //just move to next command since last one failed
-            lastrun = false;
+        { //just move to next command since last one succeded
+    
+            hardpipe=1;
+            lastrun = true;
             i++; 
             counter++;
         }
         
         if(last_conn == ";")
         {
-            
-                execute_cmd(current);
-                if(this->TestPF != false)
-                {
-                    lastrun = true;
-                }
-                else
-                {
-                    lastrun = false;
-                }
-                i++;
-                counter++;
-            
+            hardpipe =0;
+            successint = execute_cmd(current);
+            if(successint != -1)
+            {
+                lastrun = true;
+            }
+            else
+            {
+                lastrun = false;
+            }
+            i++;
+            counter++;
         }
     }
 }

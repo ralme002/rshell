@@ -1,4 +1,5 @@
 #include "builder.h"
+#include "vector"
 
 /* execute builder takes in will take in a string that has been cleaned passed from cleanup
 this will then be set to the protected builder pull_data for later "building" for our call class functionality
@@ -20,82 +21,75 @@ void builder::vector_builder() //complete! assumptions are that there is a space
 {
     string temp1 = this->pull_data;
     string temp2;
-    int spacecount =0;
-    
+    int spacecount = 0;
+    spacecount++;
 
-   for(unsigned int i=0; i < temp1.length(); i++)
-   {
+    for(unsigned int i=0; i< temp1.length(); i++)
+    {
+        if((temp1.at(i)== ' ')&&(spacecount ==0))
+        {
+            i++;
+            spacecount++;
+        }
+        if(temp1.at(i) ==' ')
+        {
+            spacecount++;
+            
+            if(i+1 < temp1.length())
+            {
+                if((temp1.at(i+1) == '&')|| (temp1.at(i+1) == '|'))
+                {
+                    i++;
+                }
+            }
+            
+        }
 
-       if((temp2.length() == 0)&& (temp1.at(i) == ' '))
-       {
-           i++;
-       
-       }
-      
-       if(temp1.at(i) == ';')
-       {
-           str.push_back(temp2); cout << "pushed:" << temp2 << ":" << endl;
-           temp2.clear();   
-           temp2 += temp1.at(i);
-           str.push_back(temp2); cout << "pushed:" << temp2 << ":" << endl;
-           temp2.clear();
-           i+=2;
-       }
-       
-       if(temp1.at(i) == ' ')
-       {
-           if(i+1 <= temp1.length())
-           {
-               if((temp1.at(i+1) != '&') && (temp1.at(i+1) != '|'))
-               {
-                   temp2 += temp1.at(i);
-               }
-               
-               if(i+2 <= temp1.length())
-               {
-                   if((temp1.at(i+1) == '&') && (temp1.at(i+2) =='&'))
-                   {
-                       str.push_back(temp2); cout << "pushed:" << temp2 << ":" << endl;
-                       temp2.clear();
-                       temp2 += '&';
-                       temp2 += '&';
-                       str.push_back(temp2); cout << "pushed:" << temp2 << ":" << endl;
-                       temp2.clear();
-                       i+=3;
-                   }
-                   
-                   if((temp1.at(i+1) == '|') && (temp1.at(i+2) =='|'))
-                   {
-                       str.push_back(temp2); cout << "pushed:" << temp2 << ":" << endl;
-                       temp2.clear();
-                       temp2 += '|';
-                       temp2 += '|';
-                       str.push_back(temp2); cout << "pushed:" << temp2 << ":" << endl;
-                       temp2.clear();
-                       i+=3;
-                   }
-               }
-
-           }
-           
-       }
-       
-       if((temp1.at(i) == ' ') && (spacecount ==0))
-       {
-           i++;
-           temp2 += temp1.at(i);;
-           spacecount++;
-           
-       }
-       else
-       {
-           temp2 += temp1.at(i);
-           spacecount =0;
-       }
-   }
-  
-   str.push_back(temp2); cout << "pushed:" << temp2 << ":" << endl;
-    
+        if(temp1.at(i)== ';')
+        {
+            this->str.push_back(temp2);
+            temp2.clear();
+            temp2 += ';';
+            this->str.push_back(temp2);
+            temp2.clear();
+            i+=2;
+        }
+        
+        if(temp1.at(i) =='&')
+        {
+            if(i+1 < temp1.length())
+            {
+                if(temp1.at(i+1) == '&');
+                this->str.push_back(temp2);
+                temp2.clear();
+                temp2+= temp1.at(i+1);
+                temp2+= temp1.at(i+1);
+                this->str.push_back(temp2);
+                temp2.clear();
+                i+=3;
+            }
+        }
+        
+        if(temp1.at(i) =='|')
+        {
+            if(i+1 < temp1.length())
+            {
+                if(temp1.at(i+1) == '|');
+                this->str.push_back(temp2);
+                temp2.clear();
+                temp2+= temp1.at(i+1);
+                temp2+= temp1.at(i+1);
+                this->str.push_back(temp2);
+                temp2.clear();
+                i+=3;
+            }
+        }
+        
+        temp2 += temp1.at(i);
+ 
+    }
+        this->str.push_back(temp2);
+        temp2.clear();
 }
 
 void builder::container_builder()
