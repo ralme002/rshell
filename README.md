@@ -22,4 +22,4 @@ For this assignment we are emulating a shell terminal. When rshell is executed t
 
 # Known Bugs
 
-When && and || commands are entered together ex:" ls -a && || pwd" the program will crash. We are currently resolving this "feature".
+When && and || commands are entered together ex:" ls -a && || pwd" the program will crash. We are currently resolving this "feature". Another bug that we are unable to track down completely is one that will reiterate through a few more times using the last 3-4 inputs again. This bug is hard to track as it sometimes shows up and other times will not, when using same or different commands.
