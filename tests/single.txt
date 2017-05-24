@@ -2,7 +2,15 @@ ls -a
 echo nerd
 echo robert
 mkdir eraseme
-cd eraseme
+echo hello
 pwd
-cd
+echo something
+ls -l
+echo exit
+echo A
+ls
+echo this is 12th
+echo B
+ls -a
+pwd
 exit

@@ -1,0 +1,18 @@
+echo A && (fail || nope || cant) || echo NOPE; echo WHY
+notgonnarun || (echo A && echo B || echo C) || echo why
+echo YOU && ( echo OWE && echo me || yousuck.txt ) || notgonnarun; echo cocos
+exit
+test -e ../src/build.cpp
+[../src/clean.cpp]
+[-f ../src]
+test -e ../src/notafile
+[-e notafile] || [-f ../src/main.cpp]; [../src/main.cpp]
+[-d /home/ubuntu/workspace/rshell] && test -d /home/ubuntu/workspace/rshell || echo exit; echo A
+echo a && ls -a && echo B; nope || echo C && echo why; echo because && ls -a
+test -f ../src/min.cpp || echo A && echo B; [-d /home/ubuntu/workspace/rshell]
+test -f ../src/builder.cpp
+
+test -f ../src/build.cpp)
+echo A && (echo B || nope || cant) && echo NOPE
+echo A && (fail || nope || cant) && echo NOPE
+echo A && (fail || nope || cant) || echo NOPE

@@ -1,17 +1,8 @@
-#echo A && exit #A;
-#echo A || exit #A, testdone;
-#echo A; exit #A;
-echo A; #exit #A, testdone;
-echo does not exit; && echo A;
-echo does not exit; && echo A;
-echo does not exit; && echo A; 
-echo exits after B; && echo A;
-echo congratz; now I will exit;
-exit; && whoops;
-exit;
-echo bye; && exit;
-echo Hello World;
-ls -a;
-ls -l;
-echo hurray;
-exit;
+#echo A && exit #A
+#echo A || exit #A, testdone
+#echo A && exit #A
+echo A #exit A testdone
+echo does not exit && echo A
+echo exits after B && echo A
+echo congratz; now I will exit
+exit && whoops
