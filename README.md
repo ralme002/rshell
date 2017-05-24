@@ -9,7 +9,7 @@ In order to run our program please run the following commands
 
 2) cd rshell
 
-3) git checkout hw2
+3) git checkout hw3
 
 4) make
 
