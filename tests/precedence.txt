@@ -1,0 +1,9 @@
+echo A && [../src/main.cpp])
+((test -f ../src/build.cpp)
+ls && ls -a && test -f ../src/cleanup.h || ([-e ../src/main.cpp] && test -f ../src/cleanup.h) || exit ; ls -a
+echo A && (ls || nope || cant) && echo NOPE
+echo A && (fail || nope || cant) && echo NOPE
+echo A && (echo B && echo C || not.txt) || notgonnarun; echo D
+echo A && (fail || nope || cant) || echo NOPE; echo WHY
+notgonnarun || (echo A && (echo B || echo C) && echo D) && (failee || (echo make && echo sure && (echo it works))) || echo nope; echo DONE
+exit

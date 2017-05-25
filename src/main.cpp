@@ -21,7 +21,7 @@ using namespace std;
 int main()
 {
 	int totalcount=0;
-	int parentcount =0;
+	//int parentcount =0;
 	
 	while(1)
 	{
@@ -31,9 +31,9 @@ int main()
 	
 		if(temp1.length() > 0)
 		{
-			cout << endl << "while loop counter " << totalcount << endl;
-			cout <<"/////////////////SEPERATE INPUT ////////////////////////////" << endl;
-			cout  << "INPUT:" << temp1 << endl;
+			//cout << endl << "while loop counter " << totalcount << endl;
+			//cout <<"/////////////////SEPERATE INPUT ////////////////////////////" << endl;
+			//cout  << "INPUT:" << temp1 << endl;
 			int TestClean = 0;
 			    base *first = new cleanup;
 				first->setinput(temp1); //calls user input and stores in private string
@@ -46,8 +46,8 @@ int main()
 					vector <base*> temp3 = second->execute_builder(temp2);
 					base *third = new call;
 					third->execute_call(temp3);
-					parentcount = third->TestCur();
-					cout << "main parentcount +" << parentcount << "+" << endl;
+					totalcount = third->TestCur();
+					//cout << "main parentcount +" << parentcount << "+" << endl;
 				}
 		}
 	}

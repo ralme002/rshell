@@ -66,7 +66,7 @@ void cleanup::clean()
         this->ParPass = 0;
     }
 
-    cout << "AFTER CLEANUP:" << temp2 << endl;
+    //cout << "AFTER CLEANUP:" << temp2 << endl;
     
     this->cleanup_data = temp2;
 }

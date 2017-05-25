@@ -8,7 +8,7 @@ void call::execute_call(vector <base*> tmp)
     //setArray();
    currentrun = greatestAlgorithmInTheWorld();
    this->CURRENT = currentrun;
-   cout << "current Run +" << currentrun << "+" << endl;
+   //cout << "current Run +" << currentrun << "+" << endl;
 }
 
 void call::setArray()
@@ -149,7 +149,7 @@ int call::greatestAlgorithmInTheWorld()
         }
         
         current = this->holdv.at(i)->show_data();
-        cout << endl << "==current==" << current << " ==last_conn== " << last_conn << " =" << lastrun << endl;
+        //cout << endl << "==current==" << current << " ==last_conn== " << last_conn << " =" << lastrun << endl;
         
         if(counter == 0)
         {
@@ -480,7 +480,7 @@ void call::take_parent(string current)
         temp11 += current.at(i);
     }
     temp11 += '\0';
-    cout << temp11 << endl;
+    //cout << temp11 << endl;
     
     string TEST1 = temp11;
 	base *second = new builder;
@@ -490,13 +490,13 @@ void call::take_parent(string current)
     retint = third->TestCur();
     if(retint != 0) //SUCCEEDED
     {
-        cout << "one passed" << endl;
+        //cout << "one passed" << endl;
        // this->TestPF = true;
         this->TestD = true;
     }
     else //FAILED
     {
-        cout << "one DIDNOT pass" << endl;
+        //cout << "one DIDNOT pass" << endl;
         this->TestPF = false;
         this->TestD = false;
     }

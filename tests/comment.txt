@@ -1,4 +1,8 @@
 ls -l && ls #comment here && echo nope
-echo A && echo B || echo C; echo NEW # echo one && echo two
-ls -l && ls -a #here are things
-echo here || echo we || go; exit
+[-e notafile] || [-f ../src/main.cpp] #exit; [../src/main.cpp]
+echo A && echo B || echo C; ls -a # [-f ../src/main.cpp] && test -d ../src
+ls && [/home/ubuntu/workspace/rshell] && ls -a # here comes the comment stuff; exit
+echo A && (fail || nope || cant) && echo NOPE
+echo A && (fail || nope || cant) # exit
+echo didnt exit
+exit
