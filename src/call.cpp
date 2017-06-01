@@ -1,4 +1,13 @@
 #include "call.h"
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+//Function: execute_call
+//Parameters: vector <base*> tmp
+//Description: execute call takes in a vector of base pointers, then procedes process the vector into the call class
+//             from there it runs the sorting algorithm based upon the information containted within the vector 
+//             the algorithm returns a int value which is then used to identify if there has been a failure in 
+//             the algorthim.
+/////////////////////////////////////////////////////////////////////////////////////////////////
 void call::execute_call(vector <base*> tmp)
 {
     int currentrun=0;
@@ -11,6 +20,12 @@ void call::execute_call(vector <base*> tmp)
    //cout << "current Run +" << currentrun << "+" << endl;
 }
 
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+//Function: setArray
+//Parameters: none
+//Description: set array functinality runs through the array and calls on the execute cmd function
+/////////////////////////////////////////////////////////////////////////////////////////////////
 void call::setArray()
 {
     string tmp;
@@ -34,12 +49,30 @@ void call::setArray()
     }
 }
 
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+//Function: getVector
+//Parameters: vector <base*> tmp
+//Description: getVector takes in a vector base pointer and sets holdv in the protected class
+/////////////////////////////////////////////////////////////////////////////////////////////////
 void call::getVector(vector <base*> tmp)
 {
    this->holdv = tmp;
 }
 
-//syscall execvp to execute commands
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+//Function: execute_cmd
+//Parameters: string tmp
+//Description: 
+/*
+syscall execvp takes in a string to for executing a command. It works by taking the string and setting it to a char array for execvp to work
+the new array is then tokenized to and processed to add a NULL at the end of the array. From there the a child is forked off from the parent
+in this the execvp is called on the array. If there are any errors, messages are build in to describe the type of error that was encountered.
+A boolean is set if the command passes/fails, this boolean is used by our algorithm for processing to run a &&/|| command next. 
+*/
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
 void call::execute_cmd(string tmp)    
 {
     //int myTemp = 0;
@@ -122,12 +155,28 @@ void call::execute_cmd(string tmp)
 
 }
 
-//function to exit the program if exit_check is 1
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+//Function: execute_exit
+//Parameters: none
+//Description: function to exit the program if exit_check is 1
+/////////////////////////////////////////////////////////////////////////////////////////////////
 void call::execute_exit()
 {
     cout << "Exit Program..." << endl;
     exit(0);
 }
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+//Function: greatestAlgorithmInTheWorld
+//Parameters: none
+//Description: 
+/*
+greatestAlgorithmInTheWorld is called to process the cleaned user input and through if and else checks run the required execute functions,
+the algorithm is also designed to process the boolean sets if a execute command fails. In this case it will/will not run the next command based upon
+user entry.
+*/
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
 int call::greatestAlgorithmInTheWorld()
 {
@@ -325,6 +374,20 @@ int call::greatestAlgorithmInTheWorld()
     return this->NOTSURE;
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////////
+//Function: execute_test
+//Parameters: string tmp
+//Description: 
+/*
+execute_test takes in a string to for testing for a file and or directory. It works by taking the string and setting it to a char array for execvp to work
+the new array is then tokenized to and processed to add a NULL at the end of the array. Once the array has been processed a int value called teststat is set to see
+if the filepath entered is an actual file path. If teststat is equal to -1 then the file path is incorrect and a invalid message is returned.
+If teststat passes the file path is tested by the inherent macros ISREG and ISDIR. ISREG checks to see if the file is a registry, ISDIR checks to see
+if the filepath is a directory. Depending on the users entry the file paths will be checked against these and return a true or false statement. A boolean function is set depending
+on the success or failure of the filepath test, this is used by the algorthim for &&/|| cases.
+*/
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
 void call::execute_test(string tmp)
 {
    
@@ -431,6 +494,16 @@ void call::execute_test(string tmp)
 
 }
 
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+//Function: call_pass
+//Parameters: string current
+//Description: 
+/*
+call_pass takes in a string and adds in a default test case of -e, which checks to see if the file/directory exists and calls the execute_test function. 
+*/
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
 void call::call_pass(string current)
 {
             string testtemp;
@@ -450,6 +523,14 @@ void call::call_pass(string current)
             execute_test(testtemp);
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////////
+//Function: call_pass_bracket
+//Parameters: string current
+//Description: 
+/*
+call_pass_bracket takes in a string and adds in a default test case of -e, which checks to see if the file/directory exists and calls the execute_test function. 
+*/
+/////////////////////////////////////////////////////////////////////////////////////////////////
 void call::call_pass_bracket(string current)
 {
    string temp8;
@@ -470,6 +551,14 @@ void call::call_pass_bracket(string current)
     temp8.clear();
 }
 
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+//Function: take_parent
+//Parameters: string current
+//Description: 
+/*   handles the recursion for the commands that are within parentheses
+*/
+/////////////////////////////////////////////////////////////////////////////////////////////////
 void call::take_parent(string current)
 {
     string temp11;

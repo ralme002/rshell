@@ -23,11 +23,15 @@
 
 using namespace std;
 
-/*
-    Class Call is holds the functionality to call execvp to call commands that are passed. Also
-    has functionality for the exit command using an int value
 
+////////////////////////////////////////////////////////////////////////////////////////////////
+//Class: call
+//Derives from: public base
+//Description: 
+/*
+    Class Call holds all the functions for sorting and deciding what commands need to be executed. 
 */
+/////////////////////////////////////////////////////////////////////////////////////////////////
 class call : public base
 {
     public:

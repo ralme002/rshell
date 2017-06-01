@@ -1,9 +1,15 @@
 #include "builder.h"
 #include "vector"
 
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+//Function: execute_builder
+//Parameters: string p
+//Description: 
 /* execute builder takes in will take in a string that has been cleaned passed from cleanup
 this will then be set to the protected builder pull_data for later "building" for our call class functionality
 execute_builder will call on the functionality of pullbuilder and vector_builder*/
+/////////////////////////////////////////////////////////////////////////////////////////////////
 vector <base*> builder::execute_builder(string p)
 {
     this->pull_data = p;
@@ -13,10 +19,16 @@ vector <base*> builder::execute_builder(string p)
     return this->container;
 }
 
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+//Function: vector_builder
+//Parameters: none
+//Description: 
 /*vector builder is going to separte the pull_data into a vector of strings, this 
 change allows us to have more flexability for our call class. The vector builder is going to check the string for
 commmand delineators, upon encountering a delineator, the function is going to pull the parsed string and push it back onto a vector of strings
 The functionality of the function will check the parsing string for the three main delineators ; && ||*/
+/////////////////////////////////////////////////////////////////////////////////////////////////
 void builder::vector_builder() //complete! assumptions are that there is a space in the beggining and a space in between the connectors (; && |)
 {
     string temp1 = this->pull_data;
@@ -137,7 +149,12 @@ void builder::vector_builder() //complete! assumptions are that there is a space
         this->str.push_back(temp2); //cout << "9[L] +" << temp2 <<"+"<< endl;
         temp2.clear();
 }
+////////////////////////////////////////////////////////////////////////////////////////////////
+//Function: container_builder
+//Parameters: none
+//Description: 
 
+/////////////////////////////////////////////////////////////////////////////////////////////////
 void builder::container_builder()
 {
     base* p = new base;
