@@ -1,0 +1,7 @@
+cat < exit.sh
+cat < precedence.txt
+echo A || cat < THW.txt; echo B && cat < THW.txt
+cat < man
+echo true && cat < THW.txt
+cat < hw.sh && echo true
+exit

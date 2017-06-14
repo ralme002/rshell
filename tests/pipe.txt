@@ -1,0 +1,7 @@
+echo A | cat 
+echo A | cat | cat
+echo B | cat | cat | cat | cat|cat|cat
+echo C | cat > test.txt
+echo A && echo B | cat
+echo A ||echo B | cat
+echo A && echo B | cat | cat > test.txt | cat

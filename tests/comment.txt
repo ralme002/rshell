@@ -1,10 +1,8 @@
-ls; #this is a comment
-ls; # && ls
-echo hello; || #echo world
-echo someword; && # echo Crites
-echo Started from # the bottom here
-echo #now we here
-#echo something || echo something else 
-#this is a comment
-#echo a
+ls -l && ls #comment here && echo nope
+[-e notafile] || [-f ../src/main.cpp] #exit; [../src/main.cpp]
+echo A && echo B || echo C; ls -a # [-f ../src/main.cpp] && test -d ../src
+ls && [/home/ubuntu/workspace/rshell] && ls -a # here comes the comment stuff; exit
+echo A && (fail || nope || cant) && echo NOPE
+echo A && (fail || nope || cant) # exit
+echo didnt exit
 exit

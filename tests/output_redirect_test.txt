@@ -1,0 +1,10 @@
+echo A > test.txt
+echo A && echo B > test.txt
+echo A < test.txt > test.txt
+cat < test.txt > test.txt
+echo A | cat > test.txt
+echo C >> test.txt > test.txt
+echo A | cat | cat > test.txt
+echo A >>test.txt
+echo B >>test.txt
+exit

@@ -1,0 +1,10 @@
+test -f ../src/min.cpp || echo A && echo B; [-d /home/ubuntu/workspace/rshell]
+test -f ../src/builder.cpp
+test -e ../src/build.cpp
+[../src/clean.cpp]
+[-f ../src]
+test -e ../src/notafile
+[-e notafile] || [-f ../src/main.cpp]; [../src/main.cpp]
+[-d /home/ubuntu/workspace/rshell] && test -d /home/ubuntu/workspace/rshell || echo exit; echo A
+[/home/ubuntu/workspace/rshell] && ls -a
+exit

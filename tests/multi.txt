@@ -1,25 +1,6 @@
 echo A && echo B
-echo A || echo B
-echo A; echo B
-ls -j && echo A
-ls -j || echo A
-ls -j; echo A
-ls -j && echo A || echo B
-echo A || echo B || echo C
-echo A || echo B && echo C
-echo A && echo B && echo C  # print A, B, C
-echo endOf PatrickTest
-echo ---------------------------------------
-echo A && echo B
-echo A || echo B
-echo A; echo B
-echo A && echo B && echo C
-echo A && echo B && echo C && echo D
-echo A || echo B || echo C || echo D
-echo A || echo B && echo C && echo D
-echo A || echo B || echo C && echo D
-echo r || exit
-echo "path exists"
-echo A && echo B && echo has trailing semi
-echo exit
+echo One || echo None && echo Just
+echo exit && echo hope && echo this &&  echo exit
+echo A || echo B || echo C || echo D && echo E
+echo A && echo B && echo D || echo nope || echo si
 exit

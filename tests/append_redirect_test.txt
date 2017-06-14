@@ -1,0 +1,8 @@
+cat >> test.txt
+cat test.txt >> hw.txt
+cat comment.txt | tr A-Z a-z | tee work.txt >> hw.txt
+echo C >> test.txt >> hw.txt
+echo A  >> test.txt
+echo A && echo B >> test.txt
+echo A || echo C >> test.txt
+exit

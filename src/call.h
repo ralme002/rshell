@@ -14,39 +14,66 @@
 #include <string>
 #include <cstring>
 #include <unistd.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <time.h>
+#include <cstdlib>
+#include <fcntl.h>
+
+
+#include "builder.h"
 
 
 using namespace std;
 
-/*
-    Class Call is holds the functionality to call execvp to call commands that are passed. Also
-    has functionality for the exit command using an int value
 
+////////////////////////////////////////////////////////////////////////////////////////////////
+//Class: call
+//Derives from: public base
+//Description: 
+/*
+    Class Call holds all the functions for sorting and deciding what commands need to be executed. 
 */
+/////////////////////////////////////////////////////////////////////////////////////////////////
 class call : public base
 {
     public:
-        call(){}; //default constructor
+        call(){this->TestD = true;}; //default constructor
         ~call(){}; //default deconstructor
         
         
-        void greatestAlgorithmInTheWorld();
+        int greatestAlgorithmInTheWorld();
         void execute_call(vector <base*> tmp);
         
         void setArray();
         void getVector(vector <base*> tmp);
         void execute_cmd(string tmp); //syscall execvp to execute commands  >>   virtual void execute_cmd(base* current);     
-        int exit_check(int ex); //function to check string/array to for exit command
         void execute_exit(); //function to exit the program if exit_check is 1
+        void execute_test(string tmp); // new function does something
+        void call_pass(string current);
+        void call_pass_bracket(string current);
+        void take_parent(string current);
+        void execute_piping(string current);
+        void InputFile(string tmp);
+        void OutFile(string tmp);
+        void Close_Outfile();
+        void Close_Infile();
+        void Close_In_Out_File();
+        void OutFile_Overwrite(string tmp);
+        void pipe_command(string tmp);
         
-    
-    
     protected:
     int ex;
     vector <base*> holdv;
     char* argv;
     bool TestPF;
-   
+    bool TestD;
+    int hardexit;
+    int NOTSURE;
+    int save_stdin;
+    int save_stdout;
+    int inFile;
+    int outFile;
     
     
 };

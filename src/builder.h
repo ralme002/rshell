@@ -7,9 +7,16 @@
 using namespace std;
 
 
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+//Class: builder
+//Derives from: public base
+//Description: 
 /*The builder class is a intended to build the command string into a vector of strings. In order
 to do this the class has the functionality to take in a cleaned string from the clean up class passed to the execute_builder
 function. The pullbuilder and vector_builder */
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
 class builder : public base
 {
     public:
